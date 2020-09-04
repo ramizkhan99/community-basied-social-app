@@ -1,12 +1,12 @@
 import React from 'react';
-import rootReducer from './reducers';
+import rootReducer from './store/reducers/rootReducer';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <H1>Socmed</H1>
+      <h1>Socmed</h1>
     </div>
   );
 }
