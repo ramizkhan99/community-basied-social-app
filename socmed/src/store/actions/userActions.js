@@ -5,8 +5,8 @@ export const signIn = (credentials) => {
         axios.post('http://localhost:3000//login', {       //change url 
             username:credentials.username,
             password:credentials.password
-          }).then(() => {
-        dispatch({ type: 'LOGIN_SUCCESS' });
+          }).then((res) => {
+        dispatch({ type: 'LOGIN_SUCCESS',userId:res.id,token:res.token});
       }).catch((err) => {
         dispatch({ type: 'LOGIN_ERROR', err });
       });
