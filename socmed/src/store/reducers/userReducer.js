@@ -16,7 +16,7 @@ const userReducer = (state=initState,action)=>{
                 ...state,
                 authError:null,
                 user:action.userId,
-                token:token
+                token:action.token
             }
         case 'SIGNOUT_SUCCESS':
             console.log('signout success')

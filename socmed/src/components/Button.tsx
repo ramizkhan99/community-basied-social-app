@@ -10,8 +10,8 @@ interface IButtonProps {
 const CustomButton = (props: IButtonProps) => {
     return (
         <div>
-            <Button type="primary">Hello!</Button>
-            <h1>Hello {props.name}</h1>
+            <Button type="primary">{props.name}!</Button>
+            
         </div>
     );
 };
