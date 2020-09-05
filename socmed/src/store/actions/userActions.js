@@ -2,7 +2,7 @@ import axios from "axios"
 export const signIn = (credentials) => {
     return (dispatch, getState) => {
       
-        axios.post('http://localhost:3000//login', {       //change url 
+        axios.post('http://localhost:5000//login', {       //change url 
             username:credentials.username,
             password:credentials.password
           }).then((res) => {
@@ -18,7 +18,7 @@ export const signIn = (credentials) => {
     return (dispatch, getState) => {
       
   
-      axios.post('http://localhost:3000/signout').then(() => {
+      axios.post('http://localhost:5000/signout').then(() => {
         dispatch({ type: 'SIGNOUT_SUCCESS' })
       });
     }
@@ -28,7 +28,7 @@ export const signIn = (credentials) => {
     return (dispatch, getState) => {
      
   
-      axios.post("http://localhost:3000/users",{
+      axios.post("http://localhost:5000/users",{
           username:newUser.username,
           password:newUser.password,
           email:newUser.email,
