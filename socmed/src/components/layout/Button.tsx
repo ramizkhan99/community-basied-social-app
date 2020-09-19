@@ -11,7 +11,6 @@ const CustomButton = (props: IButtonProps) => {
     return (
         <div>
             <Button type="primary">{props.name}!</Button>
-            
         </div>
     );
 };

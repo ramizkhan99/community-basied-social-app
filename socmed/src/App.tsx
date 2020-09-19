@@ -3,7 +3,7 @@ import React from "react";
 import "./App.scss";
 
 // All component calls here
-import Button from "./components/Button";
+import Button from "./components/layout/Button";
 
 function App() {
     return (
