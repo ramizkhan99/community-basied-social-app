@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { ICredentials, signIn } from "../../store/actions/userActions";
 import { Redirect } from "react-router-dom";
 import Button from "../layout/Button";
+import { Row, Col } from "antd";
 
 interface ISignInProps {
     signIn: (state: any) => any;
@@ -29,31 +30,38 @@ class SignIn extends Component<ISignInProps, {}> {
 
         return (
             <div className="container">
-                <form className="white" onSubmit={this.handleSubmit}>
-                    <h5 className="grey-text text-darken-3">Sign In</h5>
-                    <div className="input-field">
-                        <label htmlFor="username">Email</label>
-                        <input
-                            type="text"
-                            id="username"
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            onChange={this.handleChange}
-                        />
-                    </div>
-                    <div className="input-field">
-                        <Button type="primary">Login</Button>
-                        <div className="red-text center">
-                            {authError ? <p>{authError}</p> : null}
+                <Row>
+                    <Col span={12} />
+                    <form className="white" onSubmit={this.handleSubmit}>
+                        <h5 className="grey-text text-darken-3">Sign In</h5>
+                        <div className="input-field">
+                            <label htmlFor="username">Email</label>
+                            <input
+                                type="text"
+                                id="username"
+                                onChange={this.handleChange}
+                            />
                         </div>
+                        <div className="input-field">
+                            <label htmlFor="password">Password</label>
+                            <input
+                                type="password"
+                                id="password"
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <div className="input-field">
+                            <Button type="primary">Login</Button>
+                            <div className="red-text center">
+                                {authError ? <p>{authError}</p> : null}
+                            </div>
+                        </div>
+                    </form>
+                    <Col span={12} />
+                    <div>
+                        <img src="LoginIllustration.svg" alt="SVG Image Here" />
                     </div>
-                </form>
+                </Row>
             </div>
         );
     }
