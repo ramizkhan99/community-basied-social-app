@@ -1,16 +1,17 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Button } from "antd";
 
-import "../styles/Button.scss";
+import "./styles/Button.scss";
+import { type } from "os";
 
 interface IButtonProps {
-    name: string;
+    type: "text" | "link" | "primary" | "ghost";
 }
 
-const CustomButton = (props: IButtonProps) => {
+const CustomButton: FunctionComponent<IButtonProps> = ({ type, children }) => {
     return (
         <div>
-            <Button type="primary">{props.name}!</Button>
+            <Button type={type}>{children}</Button>
         </div>
     );
 };

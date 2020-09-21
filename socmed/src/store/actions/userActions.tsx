@@ -18,7 +18,6 @@ export const signIn = (credentials: ICredentials) => {
     return (dispatch: any, getState: any) => {
         axios
             .post("http://localhost:5000/login", {
-                //change url
                 username: credentials.username,
                 password: credentials.password
             })

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ICredentials, signIn } from "../store/actions/userActions";
+import { ICredentials, signIn } from "../../store/actions/userActions";
 import { Redirect } from "react-router-dom";
+import Button from "../layout/Button";
 
 interface ISignInProps {
     signIn: (state: any) => any;
@@ -47,7 +48,7 @@ class SignIn extends Component<ISignInProps, {}> {
                         />
                     </div>
                     <div className="input-field">
-                        <button className="btn green darken-1 ">Login</button>
+                        <Button type="primary">Login</Button>
                         <div className="red-text center">
                             {authError ? <p>{authError}</p> : null}
                         </div>

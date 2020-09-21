@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { INewUser, signUp } from "../store/actions/userActions";
+import { INewUser, signUp } from "../../store/actions/userActions";
+import Button from "../layout/Button";
 
 interface ISignUpProps {
     signUp: (state: any) => any;
