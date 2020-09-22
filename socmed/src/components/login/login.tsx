@@ -4,6 +4,7 @@ import { ICredentials, signIn } from "../../store/actions/userActions";
 import { Redirect } from "react-router-dom";
 import Button from "../layout/Button";
 import { Row, Col } from "antd";
+import loginIllustration from "./LoginIllustration.svg"
 
 interface ISignInProps {
     signIn: (state: any) => any;
@@ -59,7 +60,7 @@ class SignIn extends Component<ISignInProps, {}> {
                     </form>
                     <Col span={12} />
                     <div>
-                        <img src="LoginIllustration.svg" alt="SVG Image Here" />
+                        <img src={loginIllustration} alt="SVG Image Here" />
                     </div>
                 </Row>
             </div>
