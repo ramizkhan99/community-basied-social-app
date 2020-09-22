@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ICredentials, signIn } from "../../store/actions/userActions";
 import { Redirect } from "react-router-dom";
-import Button from "../layout/Button";
+//import Button from "../layout/Button";
 import { Row, Col } from "antd";
+import {  Form, Input, Button, Checkbox  } from "antd";
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import loginIllustration from "./LoginIllustration.svg";
 import "./login.scss";
 
@@ -23,7 +25,7 @@ class SignIn extends Component<ISignInProps, {}> {
         });
     };
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+        //e.preventDefault();
 
         this.props.signIn(this.state);
     };
@@ -34,7 +36,8 @@ class SignIn extends Component<ISignInProps, {}> {
             <div className="container">
                 <Row align="middle">
                     <Col lg={12} sm={24}>
-                        <form className="white" onSubmit={this.handleSubmit}>
+                    <Form name="normal_login" className="login-form"  onFinish={this.handleSubmit}
+    >
                             <Row gutter={[0, 32]}>
                                 <h5 className="grey-text text-darken-3">
                                     Sign In
@@ -43,31 +46,37 @@ class SignIn extends Component<ISignInProps, {}> {
                             <Row gutter={[0, 12]}>
                                 <Col span={12} offset={2}>
                                     <div className="input-field">
-                                        <input
-                                            type="text"
-                                            id="username"
-                                            placeholder="Username"
-                                            onChange={this.handleChange}
-                                        />
+                                    <Form.Item
+                                        name="username"
+                                        rules={[{ required: true, message: 'Please input your Username!' }]}
+                                        >
+                                       <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" id="username" onChange={this.handleChange} />
+                                    </Form.Item>
                                     </div>
                                 </Col>
                             </Row>
                             <Row gutter={[0, 24]}>
                                 <Col span={12} offset={2}>
                                     <div className="input-field">
-                                        <input
-                                            type="password"
-                                            id="password"
-                                            placeholder="Password"
-                                            onChange={this.handleChange}
-                                        />
+                                        <Form.Item
+                                            name="password"
+                                            rules={[{ required: true, message: 'Please input your Password!' }]}
+                                        >
+                                            <Input
+                                                prefix={<LockOutlined className="site-form-item-icon" />}
+                                                type="password"
+                                                placeholder="Password"
+                                                id="password"
+                                                onChange = {this.handleChange}
+                                             />
+                                        </Form.Item>
                                     </div>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col span={12} offset={2}>
                                     <div className="input-field">
-                                        <Button type="primary">Login</Button>
+                                        <Button type="primary" htmlType="submit">Login</Button>
                                         <div className="red-text center">
                                             {authError ? (
                                                 <p>{authError}</p>
@@ -76,7 +85,7 @@ class SignIn extends Component<ISignInProps, {}> {
                                     </div>
                                 </Col>
                             </Row>
-                        </form>
+                        </Form>
                     </Col>
                     <Col lg={12} sm={0}>
                         <div>
