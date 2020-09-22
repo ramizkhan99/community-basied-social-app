@@ -11,7 +11,6 @@ import Button from "./components/layout/Button";
 function App() {
     return (
         <div className="App">
-            <h1>Socmed</h1>
             <SignIn />
             {/* <Button name="Mushi Mushi" /> */}
         </div>

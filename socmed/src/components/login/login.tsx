@@ -4,7 +4,8 @@ import { ICredentials, signIn } from "../../store/actions/userActions";
 import { Redirect } from "react-router-dom";
 import Button from "../layout/Button";
 import { Row, Col } from "antd";
-import loginIllustration from "./LoginIllustration.svg"
+import loginIllustration from "./LoginIllustration.svg";
+import "./login.scss";
 
 interface ISignInProps {
     signIn: (state: any) => any;
@@ -31,37 +32,57 @@ class SignIn extends Component<ISignInProps, {}> {
 
         return (
             <div className="container">
-                <Row>
-                    <Col span={12} />
-                    <form className="white" onSubmit={this.handleSubmit}>
-                        <h5 className="grey-text text-darken-3">Sign In</h5>
-                        <div className="input-field">
-                            <label htmlFor="username">Email</label>
-                            <input
-                                type="text"
-                                id="username"
-                                onChange={this.handleChange}
-                            />
+                <Row align="middle">
+                    <Col lg={12} sm={24}>
+                        <form className="white" onSubmit={this.handleSubmit}>
+                            <Row gutter={[0, 32]}>
+                                <h5 className="grey-text text-darken-3">
+                                    Sign In
+                                </h5>
+                            </Row>
+                            <Row gutter={[0, 12]}>
+                                <Col span={12} offset={2}>
+                                    <div className="input-field">
+                                        <input
+                                            type="text"
+                                            id="username"
+                                            placeholder="Username"
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row gutter={[0, 24]}>
+                                <Col span={12} offset={2}>
+                                    <div className="input-field">
+                                        <input
+                                            type="password"
+                                            id="password"
+                                            placeholder="Password"
+                                            onChange={this.handleChange}
+                                        />
+                                    </div>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col span={12} offset={2}>
+                                    <div className="input-field">
+                                        <Button type="primary">Login</Button>
+                                        <div className="red-text center">
+                                            {authError ? (
+                                                <p>{authError}</p>
+                                            ) : null}
+                                        </div>
+                                    </div>
+                                </Col>
+                            </Row>
+                        </form>
+                    </Col>
+                    <Col lg={12} sm={0}>
+                        <div>
+                            <img src={loginIllustration} alt="SVG Image Here" />
                         </div>
-                        <div className="input-field">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                type="password"
-                                id="password"
-                                onChange={this.handleChange}
-                            />
-                        </div>
-                        <div className="input-field">
-                            <Button type="primary">Login</Button>
-                            <div className="red-text center">
-                                {authError ? <p>{authError}</p> : null}
-                            </div>
-                        </div>
-                    </form>
-                    <Col span={12} />
-                    <div>
-                        <img src={loginIllustration} alt="SVG Image Here" />
-                    </div>
+                    </Col>
                 </Row>
             </div>
         );
