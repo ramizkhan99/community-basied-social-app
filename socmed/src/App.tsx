@@ -19,13 +19,13 @@ function App() {
     <BrowserRouter>
       <div className="App">
         
-        {/* <Switch>
+        <Switch>
           <Route exact path='/' component={Dashboard}/>
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
-          
-        </Switch> */}
-        <Editor/>
+          <Route path='/post'   component={Editor}/>
+        </Switch>
+        
         
       </div>
     </BrowserRouter>
