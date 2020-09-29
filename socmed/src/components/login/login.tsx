@@ -77,7 +77,7 @@ class SignIn extends Component<ISignInProps, {}> {
                             <Row>
                                 <Col span={12} offset={2}>
                                     <div className="center">
-                                        {authError?<p style={{color:"red"}}>Invalid Credentials</p>:null}
+                                        {authError?<p style={{color:"#ff4d4f"}}>Invalid Credentials!</p>:null}
                                     </div>
                                     <div className="input-field">
                                         <Button type="primary" htmlType="submit">Login</Button>
