@@ -1,43 +1,73 @@
 import React, { Component } from 'react'
-import ReactQuill from "react-quill";
+import ReactQuill, { Quill } from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-class Editor extends Component {
-  state = {
-    title: '',
-    content: ''
-  }
+
+class Editor extends React.Component {
+  state = { editorHtml: "",
+            title:  "" };
+
   handleChange = (e:any) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
+    this.setState({ [e.target.id]: e.target.value });
+  };
+  handleQuill = (html:any)=>{
+    this.setState({ editorHtml: html });
   }
   handleSubmit = (e:any) => {
     e.preventDefault();
     console.log(this.state);
     
   }
+
+
+
+  static formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "color"
+  ];
+
   render() {
-    
     return (
-      <div className="container">
+      <div className="text-editor">
         <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Create a New Project</h5>
+          <h1>Create Post</h1>
           <div className="input-field">
             <input type="text" id='title' onChange={this.handleChange} />
-            <label htmlFor="title">Project Title</label>
+            <label htmlFor="title">Title</label>
           </div>
-          <div className="input-field">
-            <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
-            <label htmlFor="content">Project Content</label>
-          </div>
-          <div className="input-field">
-            <button className="btn green darken-1">Create</button>
-          </div>
+          <ReactQuill
+          value={this.state.editorHtml}
+          onChange={this.handleQuill}
+          formats={Editor.formats}
+        />
+        <div className="input-field">
+            <button className="btn green darken-1">Post</button>
+        </div>
         </form>
+        <h1>Test the rendering</h1>
+        <div
+          dangerouslySetInnerHTML={{
+          __html: this.state.editorHtml
+            }}>
+        </div>
+
       </div>
-    )
+      
+    );
   }
 }
 
 export default Editor;
+
