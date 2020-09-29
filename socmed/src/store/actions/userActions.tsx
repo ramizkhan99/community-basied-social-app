@@ -14,7 +14,7 @@ export interface INewUser {
 }
 
 export const signIn = (credentials: ICredentials) => {
-    console.log(credentials);
+    //console.log(credentials);
     return (dispatch: any, getState: any) => {
         axios
             .post("http://localhost:5000/login", {
@@ -22,7 +22,7 @@ export const signIn = (credentials: ICredentials) => {
                 password: credentials.password
             })
             .then((res) => {
-                console.log(res);
+                //console.log(res);
                 dispatch({
                     type: "LOGIN_SUCCESS",
                     userId: res.data.id,
@@ -30,15 +30,23 @@ export const signIn = (credentials: ICredentials) => {
                 });
             })
             .catch((err) => {
-                console.log(err);
+               // console.log(err);
                 dispatch({ type: "LOGIN_ERROR", err });
             });
     };
 };
 
 export const signOut = () => {
+    console.log("signout called")
     return (dispatch: any, getState: any) => {
-        axios.post("http://localhost:5000/signout").then(() => {
+        console.log(getState())
+        axios.post("http://localhost:5000/signout",{
+            
+        },{
+            headers:{
+                'authorization': 'Bearer '+ getState().userReducer.token
+            }
+        }).then(() => {
             dispatch({ type: "SIGNOUT_SUCCESS" });
         });
     };

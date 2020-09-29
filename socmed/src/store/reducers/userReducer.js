@@ -13,8 +13,8 @@ const userReducer = (state=initState,action)=>{
                     authError:action.err
                 }
         case 'LOGIN_SUCCESS':
-            console.log('login success');
-            console.log(action)
+            //console.log('login success');
+            //console.log(action)
             return{
                 ...state,
                 authError: "success",
@@ -23,9 +23,12 @@ const userReducer = (state=initState,action)=>{
             }
         case 'SIGNOUT_SUCCESS':
             console.log('signout success')
-            return state;
+            return {
+                ...state,
+                authError: null
+              }
         case 'SIGNUP_SUCCESS':
-                console.log('signup success')
+                //console.log('signup success')
                 return {
                   ...state,
                   authError: "success"

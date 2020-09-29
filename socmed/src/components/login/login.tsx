@@ -83,7 +83,15 @@ class SignIn extends Component<ISignInProps, {}> {
                                         <Button type="primary" htmlType="submit">Login</Button>
                                     </div>
                                     
+                                    
                                 </Col>
+                            </Row>
+                            <Row>
+                            <Col span={12} offset={2}>
+                                <div className="center">
+                                    <a href="/signup">Sign Up Now!</a>
+                                </div>
+                            </Col>
                             </Row>
                         </Form>
                     </Col>
