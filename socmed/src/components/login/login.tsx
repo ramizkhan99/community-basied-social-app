@@ -31,6 +31,7 @@ class SignIn extends Component<ISignInProps, {}> {
     };
     render() {
         const { authError } = this.props;
+        if(!authError) return<Redirect to='/'/>
 
         return (
             <div className="container">
@@ -99,7 +100,7 @@ class SignIn extends Component<ISignInProps, {}> {
 }
 const mapStateToProps = (state: any) => {
     return {
-        authError: state.authError
+        authError: state.userReducer.authError
     };
 };
 const mapDispatchToProps = (dispatch: any) => {
