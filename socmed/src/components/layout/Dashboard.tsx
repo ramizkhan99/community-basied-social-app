@@ -6,17 +6,18 @@ import SignOut from "../signout"
 
 interface ISignInProps {
     authError: String;
+    username:String;
 }
 
 class Dashboard extends Component<ISignInProps, {}>{
     render(){
         
-        const { authError } = this.props;
+        const { authError,username } = this.props;
         
         if(authError!=="success") return <Redirect to='/signin'/>
         return(
         <div className="dashboard container">
-            <h1>Welcome to Commcon</h1>
+            <h1>Welcome to Commcon,{username}</h1>
             <SignOut/>
         </div>
     
@@ -24,9 +25,10 @@ class Dashboard extends Component<ISignInProps, {}>{
     }
 }
 const mapStateToProps = (state:any) =>{
-    
+    console.log(state)
     return{
-        authError: state.userReducer.authError
+        authError: state.userReducer.authError,
+        username:state.userReducer.username
     }
 }
 export default connect(mapStateToProps)(Dashboard)

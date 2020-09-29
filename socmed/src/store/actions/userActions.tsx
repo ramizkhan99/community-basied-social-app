@@ -21,12 +21,13 @@ export const signIn = (credentials: ICredentials) => {
                 username: credentials.username,
                 password: credentials.password
             })
-            .then((res) => {
-                //console.log(res);
+            .then((res:any) => {
+                console.log(res);
                 dispatch({
                     type: "LOGIN_SUCCESS",
                     userId: res.data.id,
-                    token: res.data.token
+                    token: res.data.token,
+                    username:res.data.username
                 });
             })
             .catch((err) => {
@@ -37,9 +38,9 @@ export const signIn = (credentials: ICredentials) => {
 };
 
 export const signOut = () => {
-    console.log("signout called")
+    
     return (dispatch: any, getState: any) => {
-        console.log(getState())
+        
         axios.post("http://localhost:5000/signout",{
             
         },{
