@@ -31,7 +31,7 @@ class SignIn extends Component<ISignInProps, {}> {
     };
     render() {
         const { authError } = this.props;
-        if(!authError) return<Redirect to='/'/>
+        if(authError==="success") return<Redirect to='/'/>
 
         return (
             <div className="container">
@@ -76,14 +76,13 @@ class SignIn extends Component<ISignInProps, {}> {
                             </Row>
                             <Row>
                                 <Col span={12} offset={2}>
+                                    <div className="center">
+                                        {authError?<p style={{color:"red"}}>Invalid Credentials</p>:null}
+                                    </div>
                                     <div className="input-field">
                                         <Button type="primary" htmlType="submit">Login</Button>
-                                        <div className="red-text center">
-                                            {authError ? (
-                                                <p>{authError}</p>
-                                            ) : null}
-                                        </div>
                                     </div>
+                                    
                                 </Col>
                             </Row>
                         </Form>

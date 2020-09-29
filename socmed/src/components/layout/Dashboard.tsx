@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import {Redirect} from 'react-router-dom'
 
 interface ISignInProps {
-    authError: boolean;
+    authError: String;
 }
 
 class Dashboard extends Component<ISignInProps, {}>{
@@ -12,7 +12,7 @@ class Dashboard extends Component<ISignInProps, {}>{
         
         const { authError } = this.props;
         console.log(authError)
-        if(authError) return <Redirect to='/signin'/>
+        if(authError!=="success") return <Redirect to='/signin'/>
         return(
         <div className="dashboard container">
             <h1>Welcome to Commcon</h1>
