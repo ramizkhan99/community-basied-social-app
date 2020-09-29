@@ -9,6 +9,8 @@ import SignUp from "./components/signup/signup";
 import Button from "./components/layout/Button";
 import { signOut, signUp } from "./store/actions/userActions";
 import Dashboard from "./components/layout/Dashboard"
+import Editor from "./components/layout/Editor"
+
 
 
 function App() {
@@ -17,12 +19,14 @@ function App() {
     <BrowserRouter>
       <div className="App">
         
-        <Switch>
+        {/* <Switch>
           <Route exact path='/' component={Dashboard}/>
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
           
-        </Switch>
+        </Switch> */}
+        <Editor/>
+        
       </div>
     </BrowserRouter>
     );
