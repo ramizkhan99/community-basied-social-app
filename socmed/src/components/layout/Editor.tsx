@@ -19,24 +19,28 @@ class Editor extends React.Component {
     
   }
 
+static modules = {
+  toolbar: [
+    [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
+    [{size: []}],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{'list': 'ordered'}, {'list': 'bullet'}, 
+     {'indent': '-1'}, {'indent': '+1'}],
+    ['link', 'image', 'video'],
+    ['clean']
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: true,
+  }
+}
+static formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'indent',
+  'link', 'image', 'video'
+]
 
-
-  static formats = [
-    "header",
-    "font",
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "image",
-    "color"
-  ];
 
   render() {
     return (
@@ -51,6 +55,8 @@ class Editor extends React.Component {
           value={this.state.editorHtml}
           onChange={this.handleQuill}
           formats={Editor.formats}
+          modules={Editor.modules}
+
         />
         <div className="input-field">
             <button className="btn green darken-1">Post</button>
