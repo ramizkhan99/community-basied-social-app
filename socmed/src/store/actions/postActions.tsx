@@ -14,7 +14,7 @@ export const newPost = (postDetails:INewPost)=> {
         
         axios
             .post(
-                "http://localhost:5000/newpost",
+                "http://localhost:5000/blogs",
                 {
                     
                     title:postDetails.title,
