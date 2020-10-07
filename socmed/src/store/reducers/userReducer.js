@@ -1,8 +1,8 @@
 const initState = {
     authError:null,
-    user:null,
+    
     username:null,
-    token:null
+    
 };
 
 const userReducer = (state=initState,action)=>{
@@ -19,8 +19,6 @@ const userReducer = (state=initState,action)=>{
             return{
                 ...state,
                 authError: "success",
-                user:action.userId,
-                token:action.token,
                 username:action.username
             }
         case 'SIGNOUT_SUCCESS':
