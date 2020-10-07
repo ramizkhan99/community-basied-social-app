@@ -15,7 +15,7 @@ export const newPost = (postDetails:INewPost)=> {
         
         axios
             .post(
-                "http://localhost:5000/users",
+                "http://localhost:5000/newpost",
                 {
                     authorId:authorId,
                     authorName:authorName,
