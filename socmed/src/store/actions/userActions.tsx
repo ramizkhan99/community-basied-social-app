@@ -18,7 +18,7 @@ export const signIn = (credentials: ICredentials) => {
     return (dispatch: any, getState: any) => {
         axios
             .post(
-                "http://localhost:3980/login",
+                "http://localhost:5000/login",
                 {
                     username: credentials.username,
                     password: credentials.password,
@@ -44,7 +44,7 @@ export const signIn = (credentials: ICredentials) => {
 export const signOut = () => {
     return (dispatch: any, getState: any) => {
         axios
-            .get("http://localhost:3980/signout", { withCredentials: true })
+            .get("http://localhost:5000/signout", { withCredentials: true })
             .then(() => {
                 dispatch({ type: "SIGNOUT_SUCCESS" });
             });
@@ -55,7 +55,7 @@ export const signUp = (newUser: INewUser) => {
     return (dispatch: any, getState: any) => {
         axios
             .post(
-                "http://localhost:3980/users",
+                "http://localhost:5000/users",
                 {
                     username: newUser.username,
                     password: newUser.password,
