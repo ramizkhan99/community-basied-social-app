@@ -9,6 +9,7 @@ import {INewPost,newPost} from "../../store/actions/postActions"
 interface INewPostProps {
   authError:String;
   newPost: (state: any) => any;
+  history:any;
   
 }
 class Editor extends Component<INewPostProps, {}> {
@@ -26,6 +27,7 @@ class Editor extends Component<INewPostProps, {}> {
   handleSubmit = (e:any) => {
     e.preventDefault();
     this.props.newPost(this.state)
+    this.props.history.push('/')
     
   }
 
