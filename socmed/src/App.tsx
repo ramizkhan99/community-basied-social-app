@@ -9,6 +9,7 @@ import SignUp from "./components/signup/signup";
 import Dashboard from "./components/layout/Dashboard";
 import Editor from "./components/layout/Editor";
 
+
 function App() {
     return (
         <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
                     <Route path="/signin" component={Login} />
                     <Route path="/signup" component={SignUp} />
                     <Route path="/post" component={Editor} />
+                    
                 </Switch>
             </div>
         </BrowserRouter>

@@ -1,8 +1,10 @@
 import React ,{Component} from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import {Redirect} from 'react-router-dom'
+import {Redirect,Link} from 'react-router-dom'
 import SignOut from "../signout"
+
+
 
 interface ISignInProps {
     authError: String;
@@ -19,6 +21,8 @@ class Dashboard extends Component<ISignInProps, {}>{
         <div className="dashboard container">
             <h1>Welcome to Commcon,{username}</h1>
             <SignOut/>
+            <Link to="/post">Create New Post!</Link>
+
         </div>
     
         )

@@ -1,21 +1,31 @@
 import React, { Component } from 'react'
 import ReactQuill, { Quill } from "react-quill";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import "react-quill/dist/quill.snow.css";
 
+import {INewPost,newPost} from "../../store/actions/postActions"
 
-class Editor extends React.Component {
-  state = { editorHtml: "",
-            title:  "" };
+interface INewPostProps {
+  authError:String;
+  newPost: (state: any) => any;
+  
+}
+class Editor extends Component<INewPostProps, {}> {
+  state = { content: "",
+            title:  "",
+            genre:"",
+          };
 
   handleChange = (e:any) => {
     this.setState({ [e.target.id]: e.target.value });
   };
   handleQuill = (html:any)=>{
-    this.setState({ editorHtml: html });
+    this.setState({ content: html });
   }
   handleSubmit = (e:any) => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.newPost(this.state)
     
   }
 
@@ -43,6 +53,9 @@ static formats = [
 
 
   render() {
+    const { authError } = this.props;
+     if(authError!=="success") return <Redirect to='/signin'/>
+    
     return (
       <div className="text-editor">
         <form className="white" onSubmit={this.handleSubmit}>
@@ -51,8 +64,12 @@ static formats = [
             <input type="text" id='title' onChange={this.handleChange} />
             <label htmlFor="title">Title</label>
           </div>
+          <div className="input-field">
+            <input type="text" id='genre' onChange={this.handleChange} />
+            <label htmlFor="genre">Genre</label>
+          </div>
           <ReactQuill
-          value={this.state.editorHtml}
+          value={this.state.content}
           onChange={this.handleQuill}
           formats={Editor.formats}
           modules={Editor.modules}
@@ -65,7 +82,7 @@ static formats = [
         <h1>Test the rendering</h1>
         <div
           dangerouslySetInnerHTML={{
-          __html: this.state.editorHtml
+          __html: this.state.content
             }}>
         </div>
 
@@ -75,5 +92,19 @@ static formats = [
   }
 }
 
-export default Editor;
+const mapStateToProps = (state: any) => {
+  
+  return {
+    authError: state.userReducer.authError
+  };
+};
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+      newPost: (postDetails: INewPost) => dispatch(newPost(postDetails))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Editor);
+
+
 
