@@ -28,6 +28,8 @@ class Dashboard extends Component<ISignInProps, {}>{
             <h1>Welcome to Commcon,{username}</h1>
             <SignOut/>
             <Link to="/post">Create New Post!</Link>
+            <br/>
+            <Link to="/feed">Check Out The Feed!</Link>
 
         </div>
     
@@ -35,7 +37,7 @@ class Dashboard extends Component<ISignInProps, {}>{
     }
 }
 const mapStateToProps = (state:any) =>{
-    console.log(state)
+    
     return{
         authError: state.userReducer.authError,
         username:state.userReducer.username

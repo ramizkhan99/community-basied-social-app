@@ -25,7 +25,8 @@ const userReducer = (state=initState,action)=>{
             console.log('signout success')
             return {
                 ...state,
-                authError: null
+                authError: null,
+                username:null
               }
         case 'SIGNUP_SUCCESS':
                 //console.log('signup success')
