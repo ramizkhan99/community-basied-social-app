@@ -15,6 +15,16 @@ const projectReducer = (state=initState,action)=>{
         case 'CREATE_PROJECT_ERROR':
             console.log('Error occured while posting',action.err);
             return state;
+        case 'FETCHED_POSTS':
+            console.log("inside post red ",action.response.data.posts)
+            return {
+                ...state,
+                posts:action.response.data.posts
+            }
+        case 'FETCH_POSTS_ERROR':
+            console.log("Error Occured while fetching posts",action.posts)
+            return state
+
         default:
             return state;
 

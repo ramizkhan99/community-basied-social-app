@@ -35,3 +35,15 @@ export const newPost = (postDetails:INewPost)=> {
             });
     };
 };
+export const getPosts = () =>{
+    return (dispatch: any, getState: any) => {
+        axios.get(
+            "http://localhost:5000/blogs"
+        ).then((response:any)=>{
+            dispatch({type:"FETCHED_POSTS",response})
+        }).catch((err)=>{
+            dispatch({type:"FETCH_POSTS_ERROR",err})
+        })
+    }
+
+}
