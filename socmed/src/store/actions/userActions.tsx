@@ -26,7 +26,7 @@ export const signIn = (credentials: ICredentials) => {
                 { withCredentials: true }
             )
             .then((res: any) => {
-                console.log(res);
+                
                 dispatch({
                     type: "LOGIN_SUCCESS",
                     userId: res.data.id,

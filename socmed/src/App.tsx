@@ -8,6 +8,8 @@ import Login from "./components/login/login";
 import SignUp from "./components/signup/signup";
 import Dashboard from "./components/layout/Dashboard";
 import Editor from "./components/layout/Editor";
+import Feed from "./components/layout/Feed"
+
 
 function App() {
     return (
@@ -18,6 +20,8 @@ function App() {
                     <Route path="/signin" component={Login} />
                     <Route path="/signup" component={SignUp} />
                     <Route path="/post" component={Editor} />
+                    <Route path="/feed" component={Feed}/>
+                    
                 </Switch>
             </div>
         </BrowserRouter>

@@ -82,6 +82,7 @@ class SignUp extends Component<ISignUpProps> {
     }
 }
 const mapStateToProps = (state: any) => {
+    
     return {
         authError: state.authError
     };
