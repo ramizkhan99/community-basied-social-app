@@ -9,7 +9,9 @@ const projectReducer = (state=initState,action)=>{
     switch(action.type){
         case 'CREATE_POST':
             console.log('post created');
-            return state;
+            return {
+                ...state
+            };
         case 'CREATE_PROJECT_ERROR':
             console.log('Error occured while posting',action.err);
             return state;
