@@ -2,24 +2,28 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { INewUser, signUp } from "../../store/actions/userActions";
-import Button from "../layout/Button";
-import { Row, Col } from "antd";
+import { Layout, Form, Input, Button } from "antd";
 
 interface ISignUpProps {
     signUp: (state: any) => any;
     authError: string;
 }
 
+const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+};
+
 class SignUp extends Component<ISignUpProps> {
     state = {
         email: "",
         password: "",
         firstName: "",
-        username: ""
+        username: "",
     };
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value,
         });
     };
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -30,66 +34,69 @@ class SignUp extends Component<ISignUpProps> {
         const { authError } = this.props;
         return (
             <div className="container">
-                <Row>
-                    <Col lg={16} sm={24} />
-                    <form className="white" onSubmit={this.handleSubmit}>
-                        <h5 className="grey-text text-darken-3">Sign Up</h5>
-                        <div className="input-field">
-                            <label htmlFor="email">Email</label>
-                            <input
+                <h5 className="text-center">Sign Up</h5>
+                <Form {...layout} onFinish={this.handleSubmit}>
+                    <div className="input-field">
+                        <Form.Item label="Email">
+                            <Input
                                 type="email"
                                 id="email"
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <div className="input-field">
-                            <label htmlFor="password">Password</label>
-                            <input
+                        </Form.Item>
+                    </div>
+                    <div className="input-field">
+                        <Form.Item label="Password">
+                            <Input
                                 type="password"
                                 id="password"
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <div className="input-field">
-                            <label htmlFor="firstName">First Name</label>
-                            <input
+                        </Form.Item>
+                    </div>
+                    <div className="input-field">
+                        <Form.Item label="FirstName">
+                            <Input
                                 type="text"
                                 id="firstName"
                                 onChange={this.handleChange}
                             />
-                        </div>
-                        <div className="input-field">
-                            <label htmlFor="lastName">username</label>
-                            <input
+                        </Form.Item>
+                    </div>
+                    <div className="input-field">
+                        <Form.Item label="Username">
+                            <Input
                                 type="text"
                                 id="username"
                                 onChange={this.handleChange}
                             />
+                        </Form.Item>
+                    </div>
+                    <div className="input-field">
+                        <Button
+                            type="primary"
+                            className="btn green darken-1 waves-effect"
+                            htmlType="submit"
+                        >
+                            Sign Up
+                        </Button>
+                        <div className="red-text center">
+                            {authError ? <p>{authError}</p> : null}
                         </div>
-                        <div className="input-field">
-                            <button className="btn green darken-1 waves-effect ">
-                                Sign Up
-                            </button>
-                            <div className="red-text center">
-                                {authError ? <p>{authError}</p> : null}
-                            </div>
-                        </div>
-                    </form>
-                    <Col lg={8} sm={0} />
-                </Row>
+                    </div>
+                </Form>
             </div>
         );
     }
 }
 const mapStateToProps = (state: any) => {
-    
     return {
-        authError: state.authError
+        authError: state.authError,
     };
 };
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        signUp: (newUser: INewUser) => dispatch(signUp(newUser))
+        signUp: (newUser: INewUser) => dispatch(signUp(newUser)),
     };
 };
 
