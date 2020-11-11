@@ -4,8 +4,8 @@ import { ICredentials, signIn } from "../../store/actions/userActions";
 import { Redirect } from "react-router-dom";
 //import Button from "../layout/Button";
 import { Row, Col } from "antd";
-import {  Form, Input, Button, Checkbox  } from "antd";
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Checkbox } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import loginIllustration from "./LoginIllustration.svg";
 import "./login.scss";
 
@@ -17,11 +17,11 @@ interface ISignInProps {
 class SignIn extends Component<ISignInProps, {}> {
     state = {
         username: "",
-        password: ""
+        password: "",
     };
     handleChange = (e: any) => {
         this.setState({
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value,
         });
     };
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,14 +31,17 @@ class SignIn extends Component<ISignInProps, {}> {
     };
     render() {
         const { authError } = this.props;
-        if(authError==="success") return<Redirect to='/'/>
+        if (authError === "success") return <Redirect to="/" />;
 
         return (
             <div className="container">
                 <Row align="middle">
                     <Col lg={12} sm={24}>
-                    <Form name="normal_login" className="login-form"  onFinish={this.handleSubmit}
-    >
+                        <Form
+                            name="normal_login"
+                            className="login-form"
+                            onFinish={this.handleSubmit}
+                        >
                             <Row gutter={[0, 32]}>
                                 <h5 className="grey-text text-darken-3">
                                     Sign In
@@ -47,12 +50,25 @@ class SignIn extends Component<ISignInProps, {}> {
                             <Row gutter={[0, 12]}>
                                 <Col span={12} offset={2}>
                                     <div className="input-field">
-                                    <Form.Item
-                                        name="username"
-                                        rules={[{ required: true, message: 'Please input your Username!' }]}
+                                        <Form.Item
+                                            name="username"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message:
+                                                        "Please input your Username!",
+                                                },
+                                            ]}
                                         >
-                                       <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" id="username" onChange={this.handleChange} />
-                                    </Form.Item>
+                                            <Input
+                                                prefix={
+                                                    <UserOutlined className="site-form-item-icon" />
+                                                }
+                                                placeholder="Username"
+                                                id="username"
+                                                onChange={this.handleChange}
+                                            />
+                                        </Form.Item>
                                     </div>
                                 </Col>
                             </Row>
@@ -61,15 +77,23 @@ class SignIn extends Component<ISignInProps, {}> {
                                     <div className="input-field">
                                         <Form.Item
                                             name="password"
-                                            rules={[{ required: true, message: 'Please input your Password!' }]}
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message:
+                                                        "Please input your Password!",
+                                                },
+                                            ]}
                                         >
                                             <Input
-                                                prefix={<LockOutlined className="site-form-item-icon" />}
+                                                prefix={
+                                                    <LockOutlined className="site-form-item-icon" />
+                                                }
                                                 type="password"
                                                 placeholder="Password"
                                                 id="password"
-                                                onChange = {this.handleChange}
-                                             />
+                                                onChange={this.handleChange}
+                                            />
                                         </Form.Item>
                                     </div>
                                 </Col>
@@ -77,27 +101,34 @@ class SignIn extends Component<ISignInProps, {}> {
                             <Row>
                                 <Col span={12} offset={2}>
                                     <div className="center">
-                                        {authError?<p style={{color:"#ff4d4f"}}>Invalid Credentials!</p>:null}
+                                        {authError ? (
+                                            <p style={{ color: "#ff4d4f" }}>
+                                                Invalid Credentials!
+                                            </p>
+                                        ) : null}
                                     </div>
                                     <div className="input-field">
-                                        <Button type="primary" htmlType="submit">Login</Button>
+                                        <Button
+                                            type="primary"
+                                            htmlType="submit"
+                                        >
+                                            Login
+                                        </Button>
                                     </div>
-                                    
-                                    
                                 </Col>
                             </Row>
                             <Row>
-                            <Col span={12} offset={2}>
-                                <div className="center">
-                                    <a href="/signup">Sign Up Now!</a>
-                                </div>
-                            </Col>
+                                <Col span={12} offset={2}>
+                                    <div className="center">
+                                        <a href="/signup">Sign Up Now!</a>
+                                    </div>
+                                </Col>
                             </Row>
                         </Form>
                     </Col>
                     <Col lg={12} sm={0}>
                         <div>
-                            <img src={loginIllustration} alt="SVG Image Here" />
+                            <img src={loginIllustration} alt="" />
                         </div>
                     </Col>
                 </Row>
@@ -107,14 +138,14 @@ class SignIn extends Component<ISignInProps, {}> {
 }
 const mapStateToProps = (state: any) => {
     return {
-        authError: state.userReducer.authError
+        authError: state.userReducer.authError,
     };
 };
 const mapDispatchToProps = (dispatch: any) => {
     return {
         signIn: (creds: ICredentials) => {
             dispatch(signIn(creds));
-        }
+        },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
