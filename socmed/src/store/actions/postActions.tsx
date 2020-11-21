@@ -38,7 +38,8 @@ export const newPost = (postDetails:INewPost)=> {
 export const getPosts = () =>{
     return (dispatch: any, getState: any) => {
         axios.get(
-            "http://localhost:5000/blogs"
+            "http://localhost:5000/blogs",
+            { withCredentials: true }
         ).then((response:any)=>{
             dispatch({type:"FETCHED_POSTS",response})
         }).catch((err)=>{
